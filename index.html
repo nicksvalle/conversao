@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="sript.js" type="text/js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <title>Conversor de medidas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">    
+</head>
+<body style="height: 1000px;background-image: linear-gradient(to bottom right, rgba(30, 29, 29, 0.951), black); font-family: 'Roboto Mono', monospace; color: aliceblue;" >
+
+    <div class="container text-center">
+
+        <div class="row">
+
+            <p>Escolha a medida:</p>
+        </div>
+
+        <div class="row">
+
+            <div class="col-sm">
+
+            
+
+            </div>
+
+          <div class="col-sm">
+
+            <label for="exampleInputEmail1" class="form-label">Comprimento</label>
+            <input type="text" class="form-control" id="entrada" placeholder="Digite o valor...">
+
+            <select id="entradaType" class="form-select">
+                <option value="cm">Centímetro</option>
+                <option value="m">Metro</option>
+                <option value="km">Quilômetro</option>
+            </select>
+
+            <br>
+
+            <span>=</span>
+            <br><br>
+            <input type="text" class="form-control" id="resultado" placeholder="Resultado...">            
+            
+            <select id="resultadoType" class="form-select">
+                <option value="cm">Centímetro</option>
+                <option value="m">Metro</option>
+                <option value="km">Quilômetro</option>
+            </select>
+
+          </div>
+
+          <div class="col-sm">
+
+            
+
+        </div>
+          
+        </div>
+
+      </div>
+    
+</body>
+
+    <script>
+        var entrada = document.getElementById('entrada');
+        var resultado = document.getElementById('resultado');
+        var entradaType = document.getElementById('entradaType');
+        var resultadoType = document.getElementById('resultadoType');
+        var entradaTypeValue, resultadoTypeValue;
+        
+
+        entrada.addEventListener("keyup",meuResultado);
+        entradaType.addEventListener("change",meuResultado);
+        resultadoType.addEventListener("change",meuResultado);
+
+        entradaTypeValue = entradaType.value;
+        resultadoTypeValue = resultadoType.value;
+
+        function meuResultado(){
+
+            entradaTypeValue = entradaType.value;
+            resultadoTypeValue = resultadoType.value;
+            resultado.value = entrada.value;
+
+            if(entradaTypeValue === "m" && resultadoTypeValue==="km"){
+                //this is meter to kilometer formula 
+                resultado.value = Number(entrada.value) * 0.001;
+            }else if(entradaTypeValue === "m" && resultadoTypeValue==="cm"){
+
+                //this is meter to Centimeter formula 
+                resultado.value = Number(entrada.value) * 100;
+
+            }else if(entradaTypeValue === "m" && resultadoTypeValue==="m"){
+                //this is meter to meter formula 
+                resultado.value = entrada.value
+            }
+
+            if(entradaTypeValue === "km" && resultadoTypeValue==="m"){
+                //this is meter to kilometer formula 
+                resultado.value = Number(entrada.value) * 1000;
+            }else if(entradaTypeValue === "km" && resultadoTypeValue==="cm"){
+
+                //this is meter to Centimeter formula 
+                resultado.value = Number(entrada.value) * 100000;
+
+            }else if(entradaTypeValue === "km" && resultadoTypeValue==="km"){
+                //this is meter to meter formula 
+                resultado.value = entrada.value
+            }
+
+            if(entradaTypeValue === "cm" && resultadoTypeValue==="km"){
+                //this is meter to kilometer formula 
+                resultado.value = Number(entrada.value) * 0.00001;
+            }else if(entradaTypeValue === "cm" && resultadoTypeValue==="m"){
+
+                //this is meter to Centimeter formula 
+                resultado.value = Number(entrada.value) * 0.01;
+
+            }else if(entradaTypeValue === "cm" && resultadoTypeValue==="cm"){
+                //this is meter to meter formula 
+                resultado.value = entrada.value
+            }
+        }
+
+    </script>
+</html>
